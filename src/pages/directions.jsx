@@ -140,7 +140,7 @@ export default function Directions() {
                     </div>
 
                     <Link to="/">
-                        <a href="main.html" className="btn">⬅ Повернутися на головну</a>
+                        <p className="btn">⬅ Повернутися на головну</p>
                     </Link>
                 </main>
                 </div>
