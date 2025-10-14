@@ -1,9 +1,97 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Directions() {
+    const [shown, setShown] = useState(false);
+    const [canClose, setCanClose] = useState(false);
+
+    useEffect(() => {
+        const directions = document.querySelectorAll(".direction");
+
+        const handleHover = () => {
+        if (shown) return;
+
+        const modalEl = document.getElementById("infoModal");
+        const modal = new window.bootstrap.Modal(modalEl, {
+            backdrop: "static",
+            keyboard: false,
+        });
+        modal.show();
+
+        setShown(true);
+        directions.forEach((el) =>
+            el.removeEventListener("mouseenter", handleHover)
+        );
+        };
+
+        directions.forEach((el) => el.addEventListener("mouseenter", handleHover));
+
+        return () => {
+        directions.forEach((el) =>
+            el.removeEventListener("mouseenter", handleHover)
+        );
+        };
+    }, [shown]);
+
+    const handleCheckboxChange = (e) => {
+        const checked = e.target.checked;
+        setCanClose(checked);
+    };
+
+    const handleClose = () => {
+        if (canClose) {
+        const modalEl = document.getElementById("infoModal");
+        const modal = window.bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
+        }
+    };
+
     return (
         <>
+            <div
+                className="modal fade"
+                id="infoModal"
+                tabIndex="-1"
+                aria-labelledby="infoModalLabel"
+                aria-hidden="true"
+                >
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="infoModalLabel">
+                        Попередження
+                        </h5>
+                    </div>
+                    <div className="modal-body">
+                        <p>У зв'язку з воєнним станом на території України, деякі напрямки діяльності можуть варіюватись у вартості та терміні виконання. Для уточнення деталей зверніться до наших менеджерів.</p>
+                        <div className="form-check">
+                        <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id="dontShowAgain"
+                            onChange={handleCheckboxChange}
+                        />
+                        <label className="form-check-label" htmlFor="dontShowAgain">
+                            Я розумію, не показувати знову
+                        </label>
+                        </div>
+                    </div>
+                    <div className="modal-footer">
+                        <button
+                        type="button"
+                        className="btn btn-danger"
+                        disabled={!canClose}
+                        onClick={handleClose}
+                        >
+                        Закрити
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+
             <div className="container py-3">
                 <main>
                     <h2 className="text-center">Напрями діяльності</h2>
@@ -17,7 +105,7 @@ export default function Directions() {
                                     <img
                                         src="./web.png"
                                         alt="Веб-розробка"
-                                        tabindex="0"
+                                        tabIndex="0"
                                         width="300px"
                                     />
                                     </div>
@@ -48,7 +136,7 @@ export default function Directions() {
                                         <img
                                         src="./mobile.png"
                                         alt="Мобільна розробка"
-                                        tabindex="0"
+                                        tabIndex="0"
                                         width="300px"
                                         />
                                     </div>
@@ -72,7 +160,7 @@ export default function Directions() {
                                         <img
                                         src="./cloud.png"
                                         alt="Хмарні технології"
-                                        tabindex="0"
+                                        tabIndex="0"
                                         width="300px"
                                         />
                                     </div>
@@ -97,7 +185,7 @@ export default function Directions() {
                                         <img
                                         src="./security.png"
                                         alt="Кібербезпека"
-                                        tabindex="0"
+                                        tabIndex="0"
                                         width="300px"
                                         />
                                     </div>
@@ -122,7 +210,7 @@ export default function Directions() {
                                         <img
                                         src="../ai.png"
                                         alt="Штучний інтелект"
-                                        tabindex="0"
+                                        tabIndex="0"
                                         width="300px"
                                         />
                                     </div>
