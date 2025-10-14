@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+  transition: all 0.2s ease;
+  scroll-behavior: smooth;
+}
+
+.sm-icon {
+    width: 24px;
+}
+
+.social-link a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#hover-change:hover {
+  letter-spacing: 0.07em;
+  color: #007bff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+#founders > table:hover {
+  transform: scale(1.05);
+}
+
+.scrolling-text {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .scrolling-text {
+    border: 1px solid #ddd;
+    height: 120px;
+    overflow-y: auto;
+  }
+}
+
+.direction h4 {
+  min-height: 58px;
+}
+
+.direction > div {
+    min-height: 540px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #f1f1f1;
+  margin: 16px auto;
+  perspective: 1000px; 
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #fff;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #fff;
+  padding: 10px;
+  color: black;
+  transform: rotateY(180deg);
+}
