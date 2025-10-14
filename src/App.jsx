@@ -5,6 +5,7 @@ import Header from './components/header'
 import Footer from './components/footer'
 import MainPage from './pages/main-page';
 import Directions from './pages/directions'
+import Feedback from './pages/feedback'
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/directions" element={<Directions />} />
-                <Route path="/feedback" element={<div><h2>Зворотній зв'язок</h2></div>} />
+                <Route path="/feedback" element={<Feedback />} />
             </Routes>
         </div>
         <Footer />
