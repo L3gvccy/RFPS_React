@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import FormInput from "../components/form-input";
+import FormSelect from "../components/form-select";
 
 export default function Feedback() {
     const [validated, setValidated] = useState(false);
@@ -25,77 +27,32 @@ export default function Feedback() {
                             Персональна інформація
                         </legend>
 
-                        <div className="mb-3">
-                            <label htmlFor="fullname" className="form-label">
-                            Прізвище та ім’я:
-                            </label>
-                            <input
-                            type="text"
-                            name="fullname"
-                            id="fullname"
-                            className="form-control"
-                            required
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="email" className="form-label">
-                            E-mail:
-                            </label>
-                            <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            className="form-control"
-                            required
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="age" className="form-label">
-                            Вік:
-                            </label>
-                            <input
-                            type="number"
-                            name="age"
-                            id="age"
-                            className="form-control"
-                            required
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="education" className="form-label">
-                            Освіта:
-                            </label>
-                            <select
+                        <FormInput label="Прізвище та ім’я:" type="text" name="fullname" />
+                        <FormInput label="E-mail:" type="email" name="email" />
+                        <FormInput label="Вік:" type="text" name="age" />
+                        <FormSelect
+                            label="Освіта:"
                             name="education"
-                            id="education"
-                            className="form-select"
-                            required
-                            >
-                            <option value="">Оберіть</option>
-                            <option value="повна">Повна</option>
-                            <option value="неповна">Неповна</option>
-                            <option value="вища">Вища</option>
-                            <option value="професійна">Професійна</option>
-                            </select>
-                        </div>
+                            options={[
+                                { value: "повна", label: "Повна" },
+                                { value: "неповна", label: "Неповна" },
+                                { value: "вища", label: "Вища" },
+                                { value: "професійна", label: "Професійна" },
+                            ]}
+                        />
+                        
                         </fieldset>
 
-
-                    <div className="mb-3">
-                        <label htmlFor="purpose" className="form-label">
-                        Мета зворотнього зв’язку:
-                        </label>
-                        <select name="purpose" id="purpose" className="form-select" required>
-                        <option value="">Оберіть</option>
-                        <option value="співпраця">Співпраця</option>
-                        <option value="скарга">Скарга на порушення права власності</option>
-                        <option value="пропозиція">Пропозиція</option>
-                        <option value="помилка">Наявність помилки</option>
-                        </select>
-                    </div>
+                    <FormSelect
+                        label="Мета зворотнього зв’язку:"
+                        name="purpose"
+                        options={[
+                            { value: "співпраця", label: "Співпраця" },
+                            { value: "скарга", label: "Скарга на порушення права власності" },
+                            { value: "пропозиція", label: "Пропозиція" },
+                            { value: "помилка", label: "Наявність помилки" },
+                        ]}
+                    />
 
                     <div className="mb-3 position-relative">
                         <label htmlFor="details" className="form-label">
